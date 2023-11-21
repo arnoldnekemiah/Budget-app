@@ -47,6 +47,16 @@ gem 'listen'
 
 gem 'rspec'
 
+gem 'devise'
+
+gem 'bootstrap', '~> 5.0'
+
+# Use jquery and popper.js for Bootstrap
+gem 'jquery-rails'
+gem 'popper_js'
+
+gem 'sassc-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
