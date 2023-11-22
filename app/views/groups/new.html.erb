@@ -1,6 +1,6 @@
-
 <div class="container mt-5">
   <div class="d-flex justify-content-between bg-primary text-light align-items-center">
+    <%= render "shared/header", locals: { header: @header }, back: true %>
     <%= link_to groups_path do %>
       <i class="bx bxs-chevron-left display-4 text-white"></i>
     <% end %>
@@ -16,8 +16,10 @@
 
       <div class="form-group">
         <%= f.label :icon %>
-        <%= f.text_field :icon, autocomplete: "name", class: "form-control" %>
+        <%= f.text_field :icon, placeholder: "Enter Unsplash Image Link", class: "form-control", required: true %>
       </div>
+
+
 
       <div class="text-center mt-4">
         <%= f.submit "Add Category", class: "btn btn-primary" %>
