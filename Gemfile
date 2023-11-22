@@ -49,7 +49,11 @@ gem 'rspec'
 
 gem 'devise'
 
+gem 'cancancan'
+
 gem 'bootstrap', '~> 5.0'
+
+gem 'carrierwave'
 
 # Use jquery and popper.js for Bootstrap
 gem 'jquery-rails'
