@@ -37,19 +37,15 @@ class SpendingsController < ApplicationController
   def create
     @spending = Spending.new(spending_params)
     @group = Group.find(params[:group_id])
-  
+
     if @spending.save
       SpendingGroup.create(group_id: @group.id, spending_id: @spending.id)
-  
-      respond_to do |format|
-        format.turbo_stream
-      end
+
+      respond_to(&:turbo_stream)
     else
       render :new
     end
   end
-  
-  
 
   private
 
@@ -59,7 +55,7 @@ class SpendingsController < ApplicationController
 
   def spending_params
     params.require(:spending).permit(:name, :amount, category_ids: [])
-  end  
+  end
 
   def calculate_total(spendings)
     spendings.sum(:amount)
