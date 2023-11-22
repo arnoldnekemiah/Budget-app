@@ -13,7 +13,8 @@
       <div class="col-12 col-md-8">
         <div class="card">
           <div class="card-body">
-            <%= image_tag(@group_icon.url, alt: "Group Icon") if @group_icon.present? %>
+            <%= image_tag(@group_icon, alt: "Group Icon") if @group_icon.present? %>
+
             <div class="mt-4 spendings">
               <% @group.spendings.reverse.each do |p| %>
                 <div class="card mb-2">
@@ -25,7 +26,7 @@
               <% end %>
             </div>
             <div class="text-center mt-4">
-              <%= link_to 'Add Transaction', new_group_spending_path(@category), class: "btn btn-primary" %>
+              <%= link_to 'Add Transaction', new_group_spending_path(@group), class: "btn btn-primary" %>
             </div>
           </div>
         </div>

@@ -22,17 +22,34 @@ class SpendingsController < ApplicationController
   #   end
   # end
 
-  def create
-    @spending = Spending.new(spendings_params)
-    @group = Group.find(params[:group_id])
+  # def create
+  #   @spending = Spending.new(spending_params)
+  #   @group = Group.find(params[:group_id])
 
+  #   if @spending.save
+  #     SpendingGroup.create(group_id: @group.id, spending_id: @spending.id)
+  #     redirect_to group_spendings_path(@group), notice: 'Transaction was successfully created.'
+  #   else
+  #     render :new
+  #   end
+  # end
+
+  def create
+    @spending = Spending.new(spending_params)
+    @group = Group.find(params[:group_id])
+  
     if @spending.save
       SpendingGroup.create(group_id: @group.id, spending_id: @spending.id)
-      redirect_to group_spendings_path(@group), notice: 'Transaction was successfully created.'
+  
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
       render :new
     end
   end
+  
+  
 
   private
 
@@ -41,8 +58,8 @@ class SpendingsController < ApplicationController
   end
 
   def spending_params
-    params.require(:spending).permit(:name, :amount).merge(author_id: current_user.id)
-  end
+    params.require(:spending).permit(:name, :amount, category_ids: [])
+  end  
 
   def calculate_total(spendings)
     spendings.sum(:amount)
