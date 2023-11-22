@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_132847) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_142633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_132847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["group_id"], name: "index_spendings_on_group_id"
     t.index ["user_id"], name: "index_spendings_on_user_id"
   end
 
@@ -62,5 +64,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_132847) do
   add_foreign_key "group_spendings", "groups"
   add_foreign_key "group_spendings", "spendings"
   add_foreign_key "groups", "users"
+  add_foreign_key "spendings", "groups"
   add_foreign_key "spendings", "users"
 end

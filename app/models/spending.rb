@@ -3,5 +3,6 @@ class Spending < ApplicationRecord
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :group
   has_many :group_spendings
 end
