@@ -1,5 +1,6 @@
+# app/controllers/spendings_controller.rb
 class SpendingsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @group = Group.find(params[:group_id])
@@ -15,15 +16,15 @@ class SpendingsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @spending = current_user.spendings.build(spending_params)
+    @spending.group = @group
 
-    if @item.save
-      SpendingGroup.create(group: @group, spending: @spending)
-      redirect_to group_spendings_path(@group)
+    if @spending.save
+      redirect_to group_spendings_path(@group), notice: 'Transaction was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def set_group
