@@ -1,5 +1,5 @@
 class SpendingsController < ApplicationController
-  before_action :set_group, only: %i[index new create]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @group = Group.find(params[:group_id])
@@ -8,45 +8,22 @@ class SpendingsController < ApplicationController
   end
 
   def new
-    @spending = Spending.new
     @group = Group.find(params[:group_id])
+    @spending = Spending.new
   end
-
-  # def create
-  #   @spending = @group.spendings.build(spending_params)
-
-  #   if @spending.save
-  #     redirect_to group_spendings_path(@group), notice: 'Transaction added successfully.'
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # def create
-  #   @spending = Spending.new(spending_params)
-  #   @group = Group.find(params[:group_id])
-
-  #   if @spending.save
-  #     SpendingGroup.create(group_id: @group.id, spending_id: @spending.id)
-  #     redirect_to group_spendings_path(@group), notice: 'Transaction was successfully created.'
-  #   else
-  #     render :new
-  #   end
-  # end
 
   def create
-    @spending = Spending.new(spending_params)
     @group = Group.find(params[:group_id])
+    @spending = current_user.spendings.build(spending_params)
 
-    if @spending.save
-      SpendingGroup.create(group_id: @group.id, spending_id: @spending.id)
-
-      respond_to(&:turbo_stream)
+    if @item.save
+      SpendingGroup.create(group: @group, spending: @spending)
+      redirect_to group_spendings_path(@group)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
-
+  
   private
 
   def set_group
@@ -54,7 +31,7 @@ class SpendingsController < ApplicationController
   end
 
   def spending_params
-    params.require(:spending).permit(:name, :amount, category_ids: [])
+    params.require(:spending).permit(:name, :amount)
   end
 
   def calculate_total(spendings)

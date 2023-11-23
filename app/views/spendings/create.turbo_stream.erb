@@ -1,0 +1,2 @@
+<%= turbo_stream.append @spending, partial: 'spendings/spending', locals: { spending: @spending } %>
+<%= turbo_stream.replace @group, partial: 'groups/show', locals: { group: @group } %>

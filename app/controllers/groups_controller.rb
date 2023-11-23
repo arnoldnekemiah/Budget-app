@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :icon).merge(author: current_user)
+    params.require(:group).permit(:name, :icon)
   end
 
   def calculate_total_amount_for_group(group)

@@ -13,7 +13,9 @@
       <div class="col-12 col-md-8">
         <div class="card">
           <div class="card-body">
-            <%= image_tag(@group_icon, alt: "Group Icon") if @group_icon.present? %>
+            <% if @group.icon.present? %>
+              <%= image_tag(@group.icon, alt: "Group Icon") %>
+            <% end %>
 
             <div class="mt-4 spendings">
               <% @group.spendings.reverse.each do |p| %>
