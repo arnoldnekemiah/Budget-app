@@ -1,0 +1,28 @@
+<div>
+  <% @header = "New Transaction" %>
+  <%= render "shared/header", locals: { header: @header }, back: true %>
+
+  <% if @spending.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spending.errors.count, "error") %> prohibited this spending from being saved:</h2>
+      <ul>
+        <% @spending.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @spending, url: group_spendings_path(@group), class: 'pt-12' do |form| %>
+    <div class="flex justify-center w-full mt-12">
+      <div class="flex flex-col w-[95%] p-5">
+        <%= form.text_field :name, placeholder: "New Transaction Name", class: 'px-5 py-2 border-b w-[95%] mx-auto block outline-none text-[20px] mb-5 ', required: true %>
+        <%= form.number_field :amount, placeholder: "Amount (USD)", class: 'px-5 py-2 border-b w-[95%] mx-auto block outline-none text-[20px] ', required: true %>
+      </div>
+    </div>
+
+    <%= form.submit "Save", class: 'bg-secondary fixed bottom-0 border border-white text-center px-7 text-white py-3 w-full' %>
+  <% end %>
+
+  <%= render partial: 'spendings/form', locals: { spending: @spending, group: @group } %>
+</div>
