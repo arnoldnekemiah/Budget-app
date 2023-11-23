@@ -9,9 +9,9 @@
       <%= link_to group_path(cat) do %>
         <div class="category card mb-3">
           <div class="row g-0">
-            <div class="col-md-4">
-              <img src="<%= cat.icon %>" class="img-fluid" alt="<%= cat.name %>" style="height: 100px; width:100px;">
-            </div>
+             <div class="col-md-4">
+             <%= image_tag(cat.icon, class: "img-fluid", alt: cat.name, style: "height: 100px; width:100px;") if cat.icon.attached? %>
+        </div>
             <div class="col-md-8">
               <div class="card-body text-dark">
                 <div class="d-flex justify-content-between">

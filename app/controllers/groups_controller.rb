@@ -32,8 +32,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     # Load spendings related to this group
     @spendings = @group.spendings.order(created_at: :desc)
-    # Check if the group has its own icon; if not, use the current user's avatar
-    @group_icon = @group.icon.present? ? @group.icon : current_user.avatar
+    @total = @spendings.sum(:amount)
   end
 
   private

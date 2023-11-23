@@ -1,36 +1,41 @@
 <% if can? :read, @group %>
   <div class="container mt-0">
-    <div class="d-flex justify-content-between bg-primary text-light align-items-center">
-      <%= link_to group_path(@group) do %>
-        <i class="bx bxs-chevron-left display-4 text-white"></i>
-      <% end %>
-
-      <h3 class="card-title"><%= @group.name %></h3>
-      <h3 class="card-subtitle">$<%= @total %></h3>
+    <div class="bg-primary text-light p-3 d-flex align-items-center justify-content-between">
+      <div>
+        <%= link_to group_path(@group) do %>
+         <i class="bx bxs-chevron-left display-2 text-black"></i>
+        <% end %>
+      </div>
+  
+      <div>
+        <h3 class="card-title"><%= @group.name %></h3>
+        <h3 class="card-subtitle">$<%= @total %></h3>
+      </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-3">
       <div class="col-12 col-md-8">
-        <div class="card">
-          <div class="card-body">
+        <div class="card d-flex gap-3">
+          <div class="w-[100%]">
             <% if @group.icon.present? %>
-              <%= image_tag(@group.icon, alt: "Group Icon") %>
+              <%= image_tag(@group.icon, alt: "Group Icon", style: "height: 100px; width:80px;") if @group.icon.attached? %>
             <% end %>
-
-            <div class="mt-4 spendings">
-              <% @group.spendings.reverse.each do |p| %>
-                <div class="card mb-2">
-                  <div class="card-body">
-                    <p class="card-text"><%= p.name %> - <%= p.created_at.strftime("%d %B %Y")%></p>
-                    <p class="card-text">$<%= p.amount %></p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-            <div class="text-center mt-4">
-              <%= link_to 'Add Transaction', new_group_spending_path(@group), class: "btn btn-primary" %>
-            </div>
           </div>
+
+          <div class="mt-4 spendings">
+            <% @group.spendings.reverse.each do |p| %>
+              <div class="card mb-2">
+                <div class="card-body">
+                  <p class="card-text"><%= p.name %> - <%= p.created_at.strftime("%d %B %Y")%></p>
+                  <p class="card-text">$<%= p.amount %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <%= link_to 'Add Transaction', new_group_spending_path(@group), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
