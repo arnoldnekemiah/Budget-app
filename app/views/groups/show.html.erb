@@ -1,9 +1,9 @@
 <% if can? :read, @group %>
   <div class="container mt-0">
     <div class="bg-primary text-light p-3 d-flex align-items-center justify-content-between">
-        <%= link_to group_path(@group), class: "text-white ms-2" do %>
-           <i class="bx bxs-chevron-left display-4 text-white"></i>Back
-        <% end %>
+       <%= link_to groups_path(@group), class: "text-white ms-2" do %>
+        Back
+      <% end %>
 
   
       <div class="d-flex gap-5">
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="text-center mt-3 ">
           <%= link_to 'Add Transaction', new_group_spending_path(@group), class: "btn btn-primary" %>
         </div>
       </div>
