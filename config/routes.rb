@@ -1,3 +1,4 @@
+# config/routes.rb
 Rails.application.routes.draw do
   devise_for :users
 
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root 'groups#index', as: :unauthenticated_root
+    root 'pages#splash', as: :unauthenticated_root
   end
 
   devise_scope :user do
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   resources :groups do
     resources :spendings, only: [:index, :new, :create]
   end
+
+  get 'splash', to: 'pages#splash', as: 'splash'
 end
