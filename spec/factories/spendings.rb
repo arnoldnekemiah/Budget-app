@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :spending do
     name { 'Dinner' }
     amount { 50.0 }
-    association :author, factory: :user
+    association :user, factory: :user
+    association :group, factory: :group
   end
 end
