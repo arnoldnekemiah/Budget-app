@@ -9,6 +9,6 @@ FactoryBot.define do
         'image/png'
       )
     end
-    user_id { FactoryBot.create(:user).id }  # associate with a user by creating one
+    user_id { FactoryBot.create(:user).id } # associate with a user by creating one
   end
 end

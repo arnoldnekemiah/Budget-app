@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Groups Index', type: :feature do
   let(:user) { create(:user) }
-  let(:group) { create(:group, user: user) }
+  let(:group) { create(:group, user:) }
 
   before(:each) do
     user = FactoryBot.create(:user, confirmed_at: Time.now)
