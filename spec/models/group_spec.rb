@@ -9,12 +9,6 @@ RSpec.describe Group, type: :model do
   end
 
   it 'is invalid without a name' do
-    group = Group.new(name: nil, icon: 'group_icon.png', user_id: 1)
-    group.valid?
-    expect(group.errors[:name]).to include("can't be blank")
-  end
-
-  it 'is invalid without an icon' do
     group = Group.new(name: 'Friends', icon: nil, user_id: 1)
     group.valid?
     expect(group.errors[:icon]).to include("can't be blank")

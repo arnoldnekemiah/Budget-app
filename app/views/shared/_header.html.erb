@@ -1,5 +1,5 @@
 <div class="fixed items-center justify-center w-full py-3 bg-primary">
-  <div class="relative flex items-center justify-center w-full max-w-wrapper">
+  <div class="relative d-flex flex-row items-center justify-center w-full max-w-wrapper">
     <div class="absolute my-auto left-2 py-2.5">
     <% if back %>
      <% if request.path.include?('/groups/new') %>
@@ -23,7 +23,7 @@
       </button>
     <% end %>
     </div>
-    <div class="text-2xl text-white capitalize">
+    <div class="text-2xl text-white px-1 py-3 test-center capitalize">
       <%= @header %>
     </div>
   </div>

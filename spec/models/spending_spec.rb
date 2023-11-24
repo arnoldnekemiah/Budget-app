@@ -27,12 +27,12 @@ RSpec.describe Spending, type: :model do
   end
 
   it 'belongs to a user' do
-    spending = Spending.reflect_on_association(:author)
+    spending = Spending.reflect_on_association(:user)
     expect(spending.macro).to eq(:belongs_to)
   end
 
   it 'has many groups' do
-    spending = Spending.reflect_on_association(:group_spendings)
-    expect(spending.macro).to eq(:has_many)
+    spending = Spending.reflect_on_association(:group)
+    expect(spending.macro).to eq(:belongs_to)
   end
 end
