@@ -1,27 +1,27 @@
-<div class="fixed items-center justify-center w-full py-3 header-div">
-  <div class="relative d-flex flex-row items-center justify-center w-full max-w-wrapper">
+<div class="fixed items-center justify-center w-full py-3 header-div" style="max-width: 400px;">
+  <div class="relative d-flex flex-row items-center justify-center w-full max-w-wrapper header-div">
     <div class="absolute my-auto left-2 py-2.5 header-div">
-    <% if back %>
-     <% if request.path.include?('/groups/new') %>
-       <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
-         <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
-       <% end %>
-       <% elsif request.path == group_spendings_path %>
-       <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
-         <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
-       <% end %>
+      <% if back %>
+        <% if request.path.include?('/groups/new') %>
+          <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
+            <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
+          <% end %>
+        <% elsif request.path == group_spendings_path %>
+          <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
+            <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
+          <% end %>
+        <% else %>
+          <%= link_to("javascript:history.back()", class: "text-white header-div text-2xl px-5 py-2.5") do %>
+            <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
+          <% end %>
+        <% end %>       
       <% else %>
-        <%= link_to("javascript:history.back()", class: "text-white header-div text-2xl px-5 py-2.5") do %>
-          <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
-        <% end %>
-      <% end %>	     
-    <% else %>
-      <button class="text-white  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-        <svg class="w-6 h-6 header-div text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+          <svg class="w-6 h-6 header-div text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-        </svg>
-      </button>
-    <% end %>
+          </svg>
+        </button>
+      <% end %>
     </div>
     <div class="text-2xl text-white px-1 py-3 test-center capitalize header-div">
       <%= @header %>

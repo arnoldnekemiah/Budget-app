@@ -1,37 +1,37 @@
-<div>
-  <div>
+<div style="max-width: 400px;">
   <% @header = "Transactions" %>
-	<%= render "shared/header", locals: { header: @header }, back: true %>
+  <%= render "shared/header", locals: { header: @header }, back: true %>
   <div class="mb-10">
-  <% if @spendings.empty?%>
-    <p class="text-center pt-16 text-xl">You don't have any transactions yet !!</p>
-  <% else %>
-    <ul class="flex flex-col justify-center pt-12 ">
-      <li class="w-[90%] mx-auto flex flex-col items-center gap-3 shadow-lg px-3 py-5  my-5 bg-white">
-          <div class="flex  justify-center items-center">
-              <div class="text-4xl me-4">
-                <%= image_tag(@group.icon, alt: "Group Icon", class: "img-fluid", style: "height: 100px; width:100px;") %>
-              </div>
+    <% if @spendings.empty? %>
+      <p class="text-center pt-16 text-xl">You don't have any transactions yet !!</p>
+    <% else %>
+      <ul class="flex flex-col justify-center pt-12">
+        <li class="w-[90%] mx-auto flex flex-col items-center gap-3 shadow-lg px-3 py-5  my-5 bg-white">
+          <div class="flex justify-center items-center">
+            <div class="text-4xl me-4">
+              <%= image_tag(@group.icon, alt: "Group Icon", class: "img-fluid", style: "max-width: 100%; height: auto;") %>
+            </div>
 
             <div class="text-lg opacity-[0.8] font-semibold uppercase"><%= @group.name %></div>
           </div>
           <div class="text-center mb-4">
             <div class="text-subtext text-sm font-light">Total spent on this category</div>
             <div class="font-extrabold text-3xl">$ <%= number_with_delimiter(@total) %></div>
-          </div> 
-      </li>
-      <% @spendings.each do |thing| %>
-        <li class="w-[90%] mx-auto items-center  shadow-lg px-3 py-5  my-5 bg-white">
-          <div class=" flex justify-between items-center p-1">
-              <span class="capitalize text-text font-semibold"><%= thing.name %></span>
-              <span class="font-semibold text-lg">$ <%=  number_with_delimiter(thing.amount)  %></span>
-          </div>
-          <div class="flex justify-between items-center p-1">
-              <span class="capitalize text-subtext font-light"><%= thing.created_at.strftime("%d %B '%Y, %R") %></span>
           </div>
         </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <%= link_to "Add a new Transaction", new_group_spending_path(@group), class: 'fixed bottom-0 border border-white text-center bg-secondary text-white py-3 w-full' %>
+        <% @spendings.each do |thing| %>
+          <li class="w-[90%] mx-auto items-center  shadow-lg px-3 py-5  my-5 bg-white">
+            <div class="flex justify-between items-center p-1">
+              <span class="capitalize text-text font-semibold"><%= thing.name %></span>
+              <span class="font-semibold text-lg">$ <%= number_with_delimiter(thing.amount) %></span>
+            </div>
+            <div class="flex justify-between items-center p-1">
+              <span class="capitalize text-subtext font-light"><%= thing.created_at.strftime("%d %B '%Y, %R") %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to "Add a new Transaction", new_group_spending_path(@group), class: 'fixed bottom-0 border border-white text-center bg-secondary text-white py-3 w-full' %>
+  </div>
 </div>

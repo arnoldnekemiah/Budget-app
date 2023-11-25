@@ -1,9 +1,9 @@
 <% if can? :read, @group %>
-  <div class="container category-container">
+  <div class="container category-container" style="max-width: 400px;">
     <div class="text-light p-3 d-flex align-items-center justify-content-between category-head">
-        <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
-         <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
-       <% end %>
+      <%= link_to(groups_path, class: "text-white header-div text-2xl py-2 px-5") do %>
+        <img class="h-6 header-div" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
+      <% end %>
 
       <div class="d-flex gap-5 back">
         <h3 class="card-title"><%= @group.name %></h3>
@@ -12,19 +12,16 @@
     </div>
 
     <div class="row justify-content-center mt-3">
-      <div class="col-12 col-md-8 ">
-        <div class="card card-container">
-          <div class="w-[100%]">
+      <div class="w-100 col-12 col-md-8 take-off ">
+        <div class="d-flex card">
             <% if @group.icon.present? %>
-              <%= image_tag(@group.icon, alt: "Group Icon", style: "height: 100px; width:80px;") if @group.icon.attached? %>
+              <%= image_tag(@group.icon, alt: "Group Icon", class: "icon") if @group.icon.attached? %>
             <% end %>
-          </div>
-
           <div class="mt-4 spendings category-list">
             <% @group.spendings.reverse.each do |p| %>
               <div class="card">
                 <div class="card-body d-flex gap-2 flex-column">
-                  <p class="card-text"><%= p.name %> - <%= p.created_at.strftime("%d %B %Y")%></p>
+                  <p class="card-text"><%= p.name %> - <%= p.created_at.strftime("%d %B %Y") %></p>
                   <p class="card-text">$<%= p.amount %></p>
                 </div>
               </div>
@@ -32,7 +29,7 @@
           </div>
         </div>
 
-        <div class="text-center mt-3 list-div ">
+        <div class="text-center mt-3 list-div">
           <%= link_to 'Add Transaction', new_group_spending_path(@group), class: "btn btn-primary list-btn" %>
         </div>
       </div>

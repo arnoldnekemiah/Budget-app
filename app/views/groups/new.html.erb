@@ -1,4 +1,4 @@
-<div class="container category-add-container">
+<div class="container category-add-container" style="max-width: 400px;">
   <div class="d-flex justify-content-between text-light align-items-center header-div">
     <%= render "shared/header", locals: { header: @header }, back: true %>
     <%= link_to groups_path do %>
@@ -8,7 +8,7 @@
   </div>
 
   <%= form_with model: @group, url: groups_path, html: { class: 'card' } do |f| %>
-    <div class="card-body card-container ">
+    <div class="card-body card-container">
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
