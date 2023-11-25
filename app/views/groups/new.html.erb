@@ -1,0 +1,27 @@
+<div class="container category-add-container" style="max-width: 400px;">
+  <div class="d-flex justify-content-between text-light align-items-center header-div">
+    <%= render "shared/header", locals: { header: @header }, back: true %>
+    <%= link_to groups_path do %>
+      <i class="bx bxs-chevron-left text-white"></i>
+    <% end %>
+    <h5 class="card-title p-2 m-auto header-div">Add New Category</h5>
+  </div>
+
+  <%= form_with model: @group, url: groups_path, html: { class: 'card' } do |f| %>
+    <div class="card-body card-container">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :icon %>
+        <%= f.file_field :icon, class: "form-control", required: true %>
+      </div>
+    </div>
+
+    <div class="text-center list-div">
+      <%= f.submit "Add Category", class: "btn btn-primary list-btn" %>
+    </div>
+  <% end %>
+</div>
