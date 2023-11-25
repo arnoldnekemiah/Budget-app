@@ -1,14 +1,14 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between bg-primary text-light align-items-center">
+<div class="container category-add-container">
+  <div class="d-flex justify-content-between text-light align-items-center header-div">
     <%= render "shared/header", locals: { header: @header }, back: true %>
     <%= link_to groups_path do %>
-      <i class="bx bxs-chevron-left display-4 text-white"></i>
+      <i class="bx bxs-chevron-left text-white"></i>
     <% end %>
-    <h5 class="card-title p-2 m-auto">Add New Category</h5>
+    <h5 class="card-title p-2 m-auto header-div">Add New Category</h5>
   </div>
 
   <%= form_with model: @group, url: groups_path, html: { class: 'card' } do |f| %>
-    <div class="card-body">
+    <div class="card-body card-container ">
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
@@ -20,11 +20,8 @@
       </div>
     </div>
 
-    <div class="text-center mt-4">
-      <%= f.submit "Add Category", class: "btn btn-primary w-100" %>
+    <div class="text-center list-div">
+      <%= f.submit "Add Category", class: "btn btn-primary list-btn" %>
     </div>
   <% end %>
-
-  <!-- Additional space at the bottom to push the button to the bottom of the page -->
-  <div class="mb-5"></div>
 </div>
