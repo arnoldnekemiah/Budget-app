@@ -31,7 +31,7 @@
 
 .category-container {
   margin-top: -50px;
-  max-width: 400px
+  max-width: 400px;
 }
 
 .category-list {
@@ -121,12 +121,13 @@
   margin-top: 5px;
 }
 
-.card-title, .time {
+.card-title,
+.time {
   color: #616161;
 }
 
 .card-text {
-  font-size:large;
+  font-size: large;
   font-weight: 600;
 }
 
@@ -139,7 +140,7 @@
 
 .btn-save {
   margin-top: 55%;
-  width: 100%;  
+  width: 100%;
   border-radius: 8px;
 }
 
